@@ -10,6 +10,6 @@ class KegelWidget extends StatefulWidget {
 class _KegelWidgetState extends State<KegelWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold();
   }
 }

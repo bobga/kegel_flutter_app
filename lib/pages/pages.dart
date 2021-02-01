@@ -22,7 +22,7 @@ class PagesWidget extends StatefulWidget {
         currentTab = int.parse(currentTab.id);
       }
     } else {
-      currentTab = 2;
+      currentTab = 0;
     }
   }
 
@@ -69,9 +69,7 @@ class _PagesWidgetState extends State<PagesWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.black,
-      ),
+      body: widget.currentPage,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Theme.of(context).accentColor,
