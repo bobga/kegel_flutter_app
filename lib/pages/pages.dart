@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import '../models/route_argument.dart';
 import '../pages/KegelWidget.dart';
 import '../pages/LearnWidget.dart';
 import '../pages/MineWidget.dart';
 import '../pages/SettingWidget.dart';
 
+// ignore: must_be_immutable
 class PagesWidget extends StatefulWidget {
   dynamic currentTab;
-
-  Widget currentPage = Container();
+  RouteArgument routeArgument;
+  Widget currentPage = KegelWidget();
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
   PagesWidget({
@@ -15,8 +17,12 @@ class PagesWidget extends StatefulWidget {
     this.currentTab,
   }) {
     if (currentTab != null) {
+      if (currentTab is RouteArgument) {
+        routeArgument = currentTab;
+        currentTab = int.parse(currentTab.id);
+      }
     } else {
-      currentTab = 0;
+      currentTab = 2;
     }
   }
 
@@ -36,17 +42,25 @@ class _PagesWidgetState extends State<PagesWidget> {
       widget.currentTab = tabItem;
       switch (tabItem) {
         case 0:
-          widget.currentPage = KegelWidget();
+          widget.currentPage = KegelWidget(
+            parentScaffoldKey: widget.scaffoldKey,
+          );
           break;
         case 1:
-          widget.currentPage = LearnWidget();
+          widget.currentPage = LearnWidget(
+            parentScaffoldKey: widget.scaffoldKey,
+          );
           break;
         case 2:
-          widget.currentPage = MineWidget();
+          widget.currentPage = MineWidget(
+            parentScaffoldKey: widget.scaffoldKey,
+          );
 
           break;
         case 3:
-          widget.currentPage = SettingWidget();
+          widget.currentPage = SettingWidget(
+            parentScaffoldKey: widget.scaffoldKey,
+          );
           break;
       }
     });

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LearnWidget extends StatefulWidget {
+  final GlobalKey<ScaffoldState> parentScaffoldKey;
+
+  const LearnWidget({Key key, this.parentScaffoldKey}) : super(key: key);
   @override
   _LearnWidgetState createState() => _LearnWidgetState();
 }
