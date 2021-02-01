@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import '../pages/KegelWidget.dart';
+import '../pages/LearnWidget.dart';
+import '../pages/MineWidget.dart';
+import '../pages/SettingWidget.dart';
 
 class PagesWidget extends StatefulWidget {
   dynamic currentTab;
@@ -32,17 +36,17 @@ class _PagesWidgetState extends State<PagesWidget> {
       widget.currentTab = tabItem;
       switch (tabItem) {
         case 0:
-          widget.currentPage = Container();
+          widget.currentPage = KegelWidget();
           break;
         case 1:
-          widget.currentPage = Container();
+          widget.currentPage = LearnWidget();
           break;
         case 2:
-          widget.currentPage = Container();
+          widget.currentPage = MineWidget();
 
           break;
         case 3:
-          widget.currentPage = Container();
+          widget.currentPage = SettingWidget();
           break;
       }
     });
