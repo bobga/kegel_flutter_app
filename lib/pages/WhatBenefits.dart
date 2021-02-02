@@ -149,10 +149,6 @@ class _WhatBenefitsWidget extends State<WhatBenefitsWidget> {
                   child: Center(
                     child: Text(
                       'Got it',
-                      style: TextStyle(
-                        fontSize: 27,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ),
                 ),

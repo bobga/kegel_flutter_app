@@ -89,10 +89,6 @@ class _CanKegelWidget extends State<CanKegelWidget> {
                   child: Center(
                     child: Text(
                       'Got it',
-                      style: TextStyle(
-                        fontSize: 27,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ),
                 ),
