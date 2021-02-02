@@ -21,7 +21,7 @@ class _SettingWidgetState extends State<SettingWidget> {
     return Scaffold(
       // key: _con.scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white.withAlpha(200),
+        backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
           S.of(context).settings,
@@ -29,6 +29,24 @@ class _SettingWidgetState extends State<SettingWidget> {
           style: Theme.of(context).textTheme.headline4.merge(
               TextStyle(letterSpacing: 1.3, fontWeight: FontWeight.bold)),
         ),
+        actions: <Widget>[
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed('/DayExercise');
+            },
+            child: Stack(
+              alignment: AlignmentDirectional.bottomEnd,
+              children: <Widget>[
+                Icon(
+                  Icons.attribution_rounded,
+                  color: Colors.grey,
+                  size: 28,
+                ),
+              ],
+            ),
+            color: Colors.transparent,
+          )
+        ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
