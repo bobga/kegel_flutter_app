@@ -14,6 +14,17 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Color(0xFFF5739E),
+        backgroundColor: Color(0xFFF5F7FA),
+        textTheme: TextTheme(
+          headline1: TextStyle(
+            color: Colors.black,
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       initialRoute: '/Splash',
       onGenerateRoute: RouteGenerator.generateRoute,
       localizationsDelegates: [
