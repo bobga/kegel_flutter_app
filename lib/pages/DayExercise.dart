@@ -13,6 +13,11 @@ class _DayExerciseWidgetState extends State<DayExerciseWidget> {
   int selExe = 0;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -30,16 +35,10 @@ class _DayExerciseWidgetState extends State<DayExerciseWidget> {
         ),
         elevation: 0,
         centerTitle: true,
-        title: Text(
-          'Level 1',
-          style: Theme.of(context).textTheme.headline5.merge(
-                TextStyle(
-                  letterSpacing: 1.3,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black38,
-                ),
-              ),
-        ),
+        title: Text('Level 1',
+            style: TextStyle(
+              color: Colors.black38,
+            )),
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
