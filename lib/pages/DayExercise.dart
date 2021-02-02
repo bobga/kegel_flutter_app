@@ -53,7 +53,10 @@ class _DayExerciseWidgetState extends State<DayExerciseWidget> {
               borderRadius: BorderRadius.circular(30.0),
               //side: BorderSide(color: Colors.red),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context)
+                  .pushReplacementNamed('/Exercise', arguments: 0);
+            },
             color: Theme.of(context).primaryColor,
             textColor: Colors.white,
             child: Text(

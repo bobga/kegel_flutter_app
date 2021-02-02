@@ -1,3 +1,4 @@
+import 'package:exercise_app/pages/ExerciseWidget.dart';
 import 'package:flutter/material.dart';
 import 'pages/pages.dart';
 import 'pages/splash_screen.dart';
@@ -38,6 +39,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => DisclaimerWidget());
       case '/Pages':
         return MaterialPageRoute(builder: (_) => PagesWidget(currentTab: args));
+      case '/Exercise':
+        return MaterialPageRoute(builder: (_) => ExerciseWidget());
       default:
         // If there is no such named route in the switch statement, e.g. /third
         return MaterialPageRoute(
