@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'pages/pages.dart';
 import 'pages/splash_screen.dart';
+import 'pages/DayExercise.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -9,6 +10,8 @@ class RouteGenerator {
     switch (settings.name) {
       case '/Splash':
         return MaterialPageRoute(builder: (_) => SplashScreen());
+      case '/DayExercise':
+        return MaterialPageRoute(builder: (_) => DayExerciseWidget());
       case '/Pages':
         return MaterialPageRoute(builder: (_) => PagesWidget(currentTab: args));
       default:
