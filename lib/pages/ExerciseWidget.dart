@@ -10,6 +10,80 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
   bool _isRelax = true;
   bool _isPlay = false;
   bool _isPrivate = false;
+
+  void _noteModalBottomSheet(context) {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      context: context,
+      builder: (BuildContext buildContext) {
+        return SingleChildScrollView(
+          padding: EdgeInsets.only(
+            left: 30,
+            top: 30,
+            right: 30,
+            bottom: 20,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                "Please note",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "- Empty your bladder before exercising. Stop the urination is not an exercise. it's not recommended to do it regularly as it can increase the risk of a urinary tract infection.",
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "- Relax your body and mind.",
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              SizedBox(
+                height: 60,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    color: Color(0xFFFFF2F0),
+                  ),
+                  padding: const EdgeInsets.all(10.0),
+                  child: SizedBox(
+                    width: 340,
+                    height: 40,
+                    child: Center(
+                      child: Text(
+                        'Got it',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -186,7 +260,9 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
                         size: 25,
                         color: Theme.of(context).primaryColor,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        _noteModalBottomSheet(context);
+                      },
                     ),
                   ),
                 ],
