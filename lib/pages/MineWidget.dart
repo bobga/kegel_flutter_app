@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:table_calendar/table_calendar.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class MineWidget extends StatefulWidget {
   final GlobalKey<ScaffoldState> parentScaffoldKey;
@@ -14,6 +15,7 @@ class MineWidget extends StatefulWidget {
 
 class _MineWidgetState extends State<MineWidget> {
   CalendarController _controller;
+
   void initState() {
     super.initState();
     _controller = CalendarController();
@@ -31,13 +33,16 @@ class _MineWidgetState extends State<MineWidget> {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             'Mine',
-            style: Theme.of(context).textTheme.headline4.merge(
-                TextStyle(letterSpacing: 1.3, fontWeight: FontWeight.bold)),
+            style: Theme.of(context).textTheme.headline2.merge(
+                  TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
           ),
         ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 15),
         child: Column(
           children: <Widget>[
             Padding(
@@ -68,7 +73,7 @@ class _MineWidgetState extends State<MineWidget> {
                         'Training',
                         style: Theme.of(context)
                             .textTheme
-                            .headline6
+                            .headline5
                             .merge(TextStyle(fontWeight: FontWeight.bold)),
                       ),
                     ),
@@ -77,57 +82,70 @@ class _MineWidgetState extends State<MineWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 5,
+                          vertical: 15,
+                        ),
                         width: 150,
                         decoration: BoxDecoration(
-                          //color: Theme.of(context).primaryColor,
-                          color: Colors.blue[700],
+                          color: Color(0xFFF56A95),
                           borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/bulb.jpg"),
-                            fit: BoxFit.cover,
-                          ),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Stack(
                           children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 18.0, top: 18.0),
-                              child: Text(
-                                'Total \nduration',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline6
-                                    .merge(TextStyle(color: Colors.white70)),
+                            Positioned(
+                              left: 50,
+                              top: 20,
+                              child: Icon(
+                                Icons.access_time,
+                                size: 130,
+                                color: Colors.white.withOpacity(0.05),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 18.0, top: 5.0, bottom: 18),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    '3',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5
-                                        .merge(TextStyle(color: Colors.white)),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 18.0,
+                                    top: 18.0,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 5.0),
-                                    child: Text(
-                                      'min',
+                                  child: Text('Total \nduration',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle1
-                                          .merge(
-                                              TextStyle(color: Colors.white70)),
-                                    ),
+                                          .subtitle1),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 18.0, top: 5.0, bottom: 18),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.baseline,
+                                    children: [
+                                      Text(
+                                        '3',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline4
+                                            .merge(
+                                                TextStyle(color: Colors.white)),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 5.0),
+                                        child: Text(
+                                          'min',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subtitle2
+                                              .merge(TextStyle(
+                                                  color: Colors.white70)),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -137,53 +155,62 @@ class _MineWidgetState extends State<MineWidget> {
                             EdgeInsets.symmetric(horizontal: 5, vertical: 15),
                         width: 150,
                         decoration: BoxDecoration(
-                          //color: Theme.of(context).primaryColor,
-                          color: Colors.purple[700],
+                          color: Color(0xFF8585FF),
                           borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/bulb.jpg"),
-                            fit: BoxFit.cover,
-                          ),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Stack(
                           children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 18.0, top: 18.0),
-                              child: Text(
-                                'Total \ndays',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline6
-                                    .merge(TextStyle(color: Colors.white70)),
+                            Positioned(
+                              left: 50,
+                              top: 20,
+                              child: Icon(
+                                Icons.credit_card,
+                                size: 130,
+                                color: Colors.white.withOpacity(0.05),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 18.0, top: 5.0, bottom: 18),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    '1',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5
-                                        .merge(TextStyle(color: Colors.white)),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 5.0),
-                                    child: Text(
-                                      'day',
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 18.0, top: 18.0),
+                                  child: Text('Total \ndays',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle1
-                                          .merge(
-                                              TextStyle(color: Colors.white70)),
-                                    ),
+                                          .subtitle1),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 18.0, top: 5.0, bottom: 18),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.baseline,
+                                    children: [
+                                      Text(
+                                        '1',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline4
+                                            .merge(
+                                                TextStyle(color: Colors.white)),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 5.0),
+                                        child: Text(
+                                          'day',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subtitle2
+                                              .merge(TextStyle(
+                                                  color: Colors.white70)),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -218,8 +245,25 @@ class _MineWidgetState extends State<MineWidget> {
                         'Duration',
                         style: Theme.of(context)
                             .textTheme
-                            .headline6
+                            .headline5
                             .merge(TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ),
+                  AspectRatio(
+                    aspectRatio: 1,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(18),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            right: 18.0, left: 12.0, top: 24, bottom: 12),
+                        child: LineChart(
+                          mainData(),
+                        ),
                       ),
                     ),
                   ),
@@ -251,7 +295,7 @@ class _MineWidgetState extends State<MineWidget> {
                         'Calendar',
                         style: Theme.of(context)
                             .textTheme
-                            .headline6
+                            .headline5
                             .merge(TextStyle(fontWeight: FontWeight.bold)),
                       ),
                     ),
@@ -337,7 +381,7 @@ class _MineWidgetState extends State<MineWidget> {
                         'History',
                         style: Theme.of(context)
                             .textTheme
-                            .headline6
+                            .headline5
                             .merge(TextStyle(fontWeight: FontWeight.bold)),
                       ),
                     ),
@@ -352,6 +396,115 @@ class _MineWidgetState extends State<MineWidget> {
           ],
         ),
       ),
+    );
+  }
+
+  LineChartData mainData() {
+    return LineChartData(
+      lineTouchData: LineTouchData(
+        touchTooltipData: LineTouchTooltipData(
+          tooltipBgColor: Color(0xFFFE805D),
+          tooltipRoundedRadius: 50,
+          getTooltipItems: (List<LineBarSpot> lineBarsSpot) {
+            return lineBarsSpot.map((lineBarSpot) {
+              return LineTooltipItem(
+                lineBarSpot.y.toString(),
+                const TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold),
+              );
+            }).toList();
+          },
+        ),
+        touchCallback: (LineTouchResponse touchResponse) {},
+        handleBuiltInTouches: true,
+      ),
+      gridData: FlGridData(
+        show: true,
+        drawVerticalLine: false,
+        getDrawingHorizontalLine: (value) {
+          return FlLine(
+            color: Colors.black.withOpacity(0.05),
+            strokeWidth: 1,
+          );
+        },
+        getDrawingVerticalLine: (value) {
+          return FlLine(
+            color: const Color(0xff37434d),
+            strokeWidth: 1,
+          );
+        },
+      ),
+      titlesData: FlTitlesData(
+        show: true,
+        bottomTitles: SideTitles(
+          showTitles: true,
+          reservedSize: 22,
+          getTextStyles: (value) => const TextStyle(
+              color: Color(0xff68737d),
+              fontWeight: FontWeight.bold,
+              fontSize: 16),
+          getTitles: (value) {
+            if (value.toInt() < 10) {
+              return '0${value.toInt()}';
+            }
+            switch (value.toInt()) {
+              case 1:
+                return '01';
+              case 2:
+                return '02';
+              case 3:
+                return '03';
+            }
+            return '${value.toInt()}';
+          },
+          margin: 8,
+        ),
+        leftTitles: SideTitles(
+          showTitles: true,
+          getTextStyles: (value) => const TextStyle(
+            color: Color(0xff67727d),
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+          ),
+          getTitles: (value) {
+            return "${value.toInt()}m";
+          },
+          reservedSize: 28,
+          margin: 12,
+        ),
+      ),
+      borderData: FlBorderData(
+          show: false, border: Border.all(color: Colors.red, width: 1)),
+      minX: 0,
+      maxX: 12,
+      minY: 0,
+      maxY: 6,
+      lineBarsData: [
+        LineChartBarData(
+          spots: [
+            FlSpot(0, 3),
+            FlSpot(2.6, 2),
+            FlSpot(4.9, 5),
+            FlSpot(6.8, 3.1),
+            FlSpot(8, 4),
+            FlSpot(9.5, 3),
+            FlSpot(11, 4),
+          ],
+          isCurved: true,
+          colors: [Color(0xFFF5739E), Color(0xFFF5739E)],
+          barWidth: 3,
+          isStrokeCapRound: true,
+          dotData: FlDotData(
+            show: false,
+          ),
+          belowBarData: BarAreaData(
+            show: true,
+            colors: [Color(0xFFF5739E), Color(0xFFF5739E)]
+                .map((color) => color.withOpacity(0.2))
+                .toList(),
+          ),
+        ),
+      ],
     );
   }
 }
