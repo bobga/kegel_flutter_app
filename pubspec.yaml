@@ -37,6 +37,8 @@ dependencies:
 
   intl: ^0.16.1
   global_configuration: ^1.6.0
+  table_calendar: ^2.3.3
+  fl_chart: ^0.12.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
