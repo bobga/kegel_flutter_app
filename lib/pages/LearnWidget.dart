@@ -25,7 +25,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                 padding: const EdgeInsets.only(left: 35, top: 40, bottom: 10),
                 child: Text(
                   'Learn',
-                  style: Theme.of(context).textTheme.headline1,
+                  style: Theme.of(context).textTheme.headline2,
                 ),
               ),
               DefaultTabController(
@@ -119,7 +119,9 @@ class _LearnWidgetState extends State<LearnWidget> {
                             children: <Widget>[
                               ListTile(
                                 onTap: () {
-                                  print("tatp");
+                                  Navigator.of(context).pushNamed(
+                                    '/WhatsKegel',
+                                  );
                                 },
                                 dense: false,
                                 title: Padding(
@@ -172,7 +174,9 @@ class _LearnWidgetState extends State<LearnWidget> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  print("tatp");
+                                  Navigator.of(context).pushNamed(
+                                    '/WhatBenefits',
+                                  );
                                 },
                                 dense: false,
                                 title: Padding(
@@ -225,7 +229,9 @@ class _LearnWidgetState extends State<LearnWidget> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  print("tatp");
+                                  Navigator.of(context).pushNamed(
+                                    '/CanKegel',
+                                  );
                                 },
                                 dense: false,
                                 title: Padding(
@@ -304,7 +310,9 @@ class _LearnWidgetState extends State<LearnWidget> {
                             children: <Widget>[
                               ListTile(
                                 onTap: () {
-                                  print("tatp");
+                                  Navigator.of(context).pushNamed(
+                                    '/HowKegel',
+                                  );
                                 },
                                 dense: false,
                                 title: Padding(
@@ -357,7 +365,9 @@ class _LearnWidgetState extends State<LearnWidget> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  print("tatp");
+                                  Navigator.of(context).pushNamed(
+                                    '/FindMuscles',
+                                  );
                                 },
                                 dense: false,
                                 title: Padding(
@@ -414,7 +424,9 @@ class _LearnWidgetState extends State<LearnWidget> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  print("tatp");
+                                  Navigator.of(context).pushNamed(
+                                    '/PleaseNote',
+                                  );
                                 },
                                 dense: false,
                                 title: Padding(
@@ -467,7 +479,9 @@ class _LearnWidgetState extends State<LearnWidget> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  print("tatp");
+                                  Navigator.of(context).pushNamed(
+                                    '/Disclaimer',
+                                  );
                                 },
                                 dense: false,
                                 title: Padding(
@@ -581,7 +595,11 @@ class _LearnWidgetState extends State<LearnWidget> {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 45.0),
                                 child: RaisedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).pushNamed(
+                                      '/WhatBenefitsForWoman',
+                                    );
+                                  },
                                   textColor: Colors.white,
                                   padding: const EdgeInsets.all(0.0),
                                   shape: RoundedRectangleBorder(
