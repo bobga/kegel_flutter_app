@@ -38,6 +38,14 @@ class _AppState extends State<App> {
             color: Color(0xFF5B5B5B),
             height: 1.4,
           ),
+          subtitle1: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
+          subtitle2: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+          ),
         ),
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
