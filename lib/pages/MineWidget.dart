@@ -13,6 +13,6 @@ class MineWidget extends StatefulWidget {
 class _MineWidgetState extends State<MineWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold();
   }
 }
