@@ -20,8 +20,32 @@ class _AppState extends State<App> {
         textTheme: TextTheme(
           headline1: TextStyle(
             color: Colors.black,
+            fontSize: 37,
+            fontWeight: FontWeight.bold,
+          ),
+          headline2: TextStyle(
+            color: Colors.black,
             fontSize: 32,
             fontWeight: FontWeight.bold,
+          ),
+          headline5: TextStyle(
+            color: Colors.black,
+            height: 1,
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+          ),
+          headline6: TextStyle(
+            color: Color(0xFF5B5B5B),
+            height: 1.4,
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            primary: Color(0xFFFD7452),
+            textStyle: TextStyle(
+              fontSize: 27,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
