@@ -22,12 +22,16 @@ class _SettingWidgetState extends State<SettingWidget> {
       // key: _con.scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
         elevation: 0,
-        title: Text(
-          S.of(context).settings,
-          //'Settings',
-          style: Theme.of(context).textTheme.headline4.merge(
-              TextStyle(letterSpacing: 1.3, fontWeight: FontWeight.bold)),
+        title: Padding(
+          padding: const EdgeInsets.all(28.0),
+          child: Text(
+            S.of(context).settings,
+            //'Settings',
+            style: Theme.of(context).textTheme.headline4.merge(
+                TextStyle(letterSpacing: 1.3, fontWeight: FontWeight.bold)),
+          ),
         ),
         actions: <Widget>[
           FlatButton(
@@ -229,12 +233,12 @@ class _SettingWidgetState extends State<SettingWidget> {
                   ),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
                       margin:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                      width: 150,
+                          EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                      width: 120,
                       decoration: BoxDecoration(
                         //color: Theme.of(context).primaryColor,
                         color: Colors.grey[100],
@@ -279,8 +283,8 @@ class _SettingWidgetState extends State<SettingWidget> {
                     ),
                     Container(
                       margin:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                      width: 150,
+                          EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                      width: 120,
                       decoration: BoxDecoration(
                         //color: Theme.of(context).primaryColor,
                         color: Colors.grey[100],
