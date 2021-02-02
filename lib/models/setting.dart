@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 //import '../helpers/custom_trace.dart';
 
 class Setting {
@@ -12,7 +12,7 @@ class Setting {
   bool payPalEnabled = true;
   bool stripeEnabled = true;
   bool razorPayEnabled = true;
-  String mainColor;
+  int mainColor;
   String mainDarkColor;
   String secondColor;
   String secondDarkColor;
@@ -34,7 +34,7 @@ class Setting {
   Setting.fromJSON(Map<String, dynamic> jsonMap) {
     try {
       appName = jsonMap['app_name'] ?? null;
-      mainColor = jsonMap['main_color'] ?? null;
+      mainColor = jsonMap['main_color'] ?? 0;
       mainDarkColor = jsonMap['main_dark_color'] ?? '';
       secondColor = jsonMap['second_color'] ?? '';
       secondDarkColor = jsonMap['second_dark_color'] ?? '';
@@ -82,12 +82,13 @@ class Setting {
     }
   }
 
-//  ValueNotifier<Locale> initMobileLanguage(String defaultLanguage) {
-//    SharedPreferences.getInstance().then((prefs) {
-//      return new ValueNotifier(Locale(prefs.get('language') ?? defaultLanguage, ''));
-//    });
-//    return new ValueNotifier(Locale(defaultLanguage ?? "en", ''));
-//  }
+  ValueNotifier<Locale> initMobileLanguage(String defaultLanguage) {
+    SharedPreferences.getInstance().then((prefs) {
+      return new ValueNotifier(
+          Locale(prefs.get('language') ?? defaultLanguage, ''));
+    });
+    return new ValueNotifier(Locale(defaultLanguage ?? "en", ''));
+  }
 
   Map toMap() {
     var map = new Map<String, dynamic>();

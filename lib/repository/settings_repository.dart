@@ -51,7 +51,9 @@ Future<Setting> initSettings() async {
 
 // Future<dynamic> setCurrentLocation() async {
 //   var location = new Location();
+//   MapsUtil mapsUtil = new MapsUtil();
 //   final whenDone = new Completer();
+//   Address _address = new Address();
 //   location.requestService().then((value) async {
 //     location.getLocation().then((_locationData) async {
 //       String _addressName = await mapsUtil.getAddressName(new LatLng(_locationData?.latitude, _locationData?.longitude), setting.value.googleMapsKey);

@@ -41,7 +41,7 @@ dependencies:
   fl_chart: ^0.12.2
   location: ^3.2.4
   shared_preferences: ^0.5.12+4
-  
+  device_preview: ^0.4.5
 dev_dependencies:
   flutter_test:
     sdk: flutter

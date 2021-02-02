@@ -18,11 +18,19 @@ enum Gender {
   Female,
 }
 
+enum Themes {
+  Blue,
+  Purple,
+  Green,
+  Pink,
+}
+
 class _SettingWidgetState extends State<SettingWidget> {
   bool isReminder = true;
   bool isVibrate = true;
   bool isVoice = true;
   Gender gend = Gender.Male;
+  Themes them = Themes.Pink;
 
   LanguagesList languagesList;
 
@@ -398,6 +406,9 @@ class _SettingWidgetState extends State<SettingWidget> {
                             children: <Widget>[
                               ListTile(
                                 onTap: () {
+                                  settingRepo.setting.value.mainColor =
+                                      Colors.blue[300].value;
+                                  settingRepo.setting.notifyListeners();
                                   Navigator.pop(context);
                                 },
                                 leading: Stack(
@@ -410,6 +421,63 @@ class _SettingWidgetState extends State<SettingWidget> {
                                   ],
                                 ),
                                 title: Text('Blue'),
+                              ),
+                              SizedBox(height: 10),
+                              ListTile(
+                                onTap: () {
+                                  settingRepo.setting.value.mainColor =
+                                      Colors.purple[300].value;
+                                  settingRepo.setting.notifyListeners();
+                                  Navigator.pop(context);
+                                },
+                                leading: Stack(
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          "assets/img/bg_learn_card1_purple.png"),
+                                      radius: 45,
+                                    ),
+                                  ],
+                                ),
+                                title: Text('Purple'),
+                              ),
+                              SizedBox(height: 10),
+                              ListTile(
+                                onTap: () {
+                                  settingRepo.setting.value.mainColor =
+                                      Colors.green[300].value;
+                                  settingRepo.setting.notifyListeners();
+                                  Navigator.pop(context);
+                                },
+                                leading: Stack(
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          "assets/img/bg_learn_card1_green.png"),
+                                      radius: 45,
+                                    ),
+                                  ],
+                                ),
+                                title: Text('Green'),
+                              ),
+                              SizedBox(height: 10),
+                              ListTile(
+                                onTap: () {
+                                  settingRepo.setting.value.mainColor =
+                                      Colors.pink[300].value;
+                                  settingRepo.setting.notifyListeners();
+                                  Navigator.pop(context);
+                                },
+                                leading: Stack(
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          "assets/img/bg_learn_card1_pink.png"),
+                                      radius: 45,
+                                    ),
+                                  ],
+                                ),
+                                title: Text('Pink'),
                               ),
                               SizedBox(height: 10),
                             ],
@@ -541,20 +609,20 @@ class _SettingWidgetState extends State<SettingWidget> {
                                   itemBuilder: (context, index) {
                                     Language _language = languagesList.languages
                                         .elementAt(index);
-                                    // settingRepo
-                                    //     .getDefaultLanguage(settingRepo
-                                    //         .setting
-                                    //         .value
-                                    //         .mobileLanguage
-                                    //         .value
-                                    //         .languageCode)
-                                    //     .then((_langCode) {
-                                    //   if (_langCode == _language.code) {
-                                    //     setState(() {
-                                    //       _language.selected = true;
-                                    //     });
-                                    //   }
-                                    // });
+                                    settingRepo
+                                        .getDefaultLanguage(settingRepo
+                                            .setting
+                                            .value
+                                            .mobileLanguage
+                                            .value
+                                            .languageCode)
+                                        .then((_langCode) {
+                                      if (_langCode == _language.code) {
+                                        setState(() {
+                                          _language.selected = true;
+                                        });
+                                      }
+                                    });
                                     return InkWell(
                                       onTap: () async {
                                         var _lang = _language.code.split("_");
