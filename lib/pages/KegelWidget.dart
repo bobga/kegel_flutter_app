@@ -11,7 +11,7 @@ class KegelWidget extends StatefulWidget {
 
 class _KegelWidgetState extends State<KegelWidget> {
   int _selectLevel = 0;
-  int _selectDay = 0;
+  int _selectDay = 3;
 
   @override
   void initState() {
@@ -36,107 +36,114 @@ class _KegelWidgetState extends State<KegelWidget> {
                     horizontal: 20,
                     vertical: 8,
                   ),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 15,
-                    ),
-                    height: 70,
-                    width: screenSize.width * 0.8,
-                    decoration: _selectDay == index
-                        ? BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                              image: AssetImage(
-                                "assets/img/bg_learn_card1_blue.png",
-                              ),
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                        : BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white,
-                          ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(13),
-                                color: _selectDay == index
-                                    ? Colors.white
-                                    : Theme.of(context)
-                                        .primaryColor
-                                        .withOpacity(0.1),
-                              ),
-                              child: Icon(
-                                Icons.play_arrow_rounded,
-                                size: 35,
-                                color: Theme.of(context).primaryColor,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Day ${index + 1}",
-                                  style: TextStyle(
-                                    color: _selectDay == index
-                                        ? Colors.white
-                                        : Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushReplacementNamed('/DayExercise', arguments: 0);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 15,
+                      ),
+                      height: 70,
+                      width: screenSize.width * 0.8,
+                      decoration: _selectDay == index
+                          ? BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                  "assets/img/bg_learn_card1_blue.png",
                                 ),
-                                SizedBox(
-                                  height: 10,
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                          : BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white,
+                            ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(13),
+                                  color: _selectDay == index
+                                      ? Colors.white
+                                      : Theme.of(context)
+                                          .primaryColor
+                                          .withOpacity(0.1),
                                 ),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.schedule,
+                                child: Icon(
+                                  Icons.play_arrow_rounded,
+                                  size: 35,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Day ${index + 1}",
+                                    style: TextStyle(
                                       color: _selectDay == index
-                                          ? Colors.white54
-                                          : Colors.black38,
-                                      size: 20,
+                                          ? Colors.white
+                                          : Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      "04:46",
-                                      style: TextStyle(
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.schedule,
                                         color: _selectDay == index
                                             ? Colors.white54
                                             : Colors.black38,
-                                        fontSize: 18,
+                                        size: 20,
                                       ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                        Container(
-                          child: LinearPercentIndicator(
-                            width: screenSize.width * 0.19,
-                            lineHeight: 7.0,
-                            percent: 0.1,
-                            backgroundColor:
-                                Theme.of(context).primaryColor.withOpacity(0.3),
-                            progressColor: _selectDay == index
-                                ? Colors.white
-                                : Theme.of(context).primaryColor,
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        "04:46",
+                                        style: TextStyle(
+                                          color: _selectDay == index
+                                              ? Colors.white54
+                                              : Colors.black38,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
+                          Container(
+                            child: LinearPercentIndicator(
+                              width: screenSize.width * 0.19,
+                              lineHeight: 7.0,
+                              percent: 0.1,
+                              backgroundColor: Theme.of(context)
+                                  .primaryColor
+                                  .withOpacity(0.3),
+                              progressColor: _selectDay == index
+                                  ? Colors.white
+                                  : Theme.of(context).primaryColor,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );

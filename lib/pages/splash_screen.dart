@@ -7,11 +7,17 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>
+    with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
     loadData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   void loadData() {
@@ -22,16 +28,24 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              "assets/img/bg_splash.jpg",
+      body: AnimatedContainer(
+        curve: Curves.fastOutSlowIn,
+        child: Container(
+          width: width,
+          height: height,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                "assets/img/bg_splash.jpg",
+              ),
+              fit: BoxFit.cover,
             ),
-            fit: BoxFit.cover,
           ),
         ),
+        duration: Duration(seconds: 2),
       ),
     );
   }
