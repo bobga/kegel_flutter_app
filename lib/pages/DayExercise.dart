@@ -99,10 +99,8 @@ class _DayExerciseWidgetState extends State<DayExerciseWidget> {
                               : Colors.yellow[50],
                         ),
                         child: Icon(
-                          selExe == index
-                              ? Icons.play_arrow_rounded
-                              : Icons.bolt,
-                          size: 35,
+                          selExe == index ? Icons.graphic_eq : Icons.bolt,
+                          size: 30,
                           color: selExe == index
                               ? Colors.blue[400]
                               : Colors.yellow[900],
