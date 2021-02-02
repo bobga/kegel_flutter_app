@@ -32,6 +32,7 @@ dependencies:
   mvc_pattern: 6.3.0
   carousel_slider: ^3.0.0
   dots_indicator: ^1.2.0
+  flutter_svg: ^0.18.0
 
   intl: ^0.16.1
   global_configuration: ^1.6.0
