@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../helpers/app_config.dart' as config;
 
 class LearnWidget extends StatefulWidget {
   final GlobalKey<ScaffoldState> parentScaffoldKey;
@@ -12,8 +11,18 @@ class LearnWidget extends StatefulWidget {
   _LearnWidgetState createState() => _LearnWidgetState();
 }
 
-class _LearnWidgetState extends State<LearnWidget> {
+class _LearnWidgetState extends State<LearnWidget>
+    with SingleTickerProviderStateMixin {
+  int _current = 0;
+  CarouselController carouselController = CarouselController();
+  TabController tabController;
+
   @override
+  void initState() {
+    super.initState();
+    tabController = TabController(length: 3, vsync: this);
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -29,58 +38,55 @@ class _LearnWidgetState extends State<LearnWidget> {
                   style: Theme.of(context).textTheme.headline2,
                 ),
               ),
-              DefaultTabController(
-                length: 3,
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      child: TabBar(
-                        isScrollable: true,
-                        indicatorColor: Colors.transparent,
-                        labelColor: Theme.of(context).primaryColor,
-                        labelStyle: TextStyle(fontWeight: FontWeight.bold),
-                        unselectedLabelColor:
-                            Theme.of(context).primaryColor.withOpacity(0.3),
-                        tabs: [
-                          Tab(
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Text(
-                                  'About Kegel',
-                                  style: TextStyle(
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ),
+              Container(
+                child: TabBar(
+                  controller: tabController,
+                  isScrollable: true,
+                  indicatorColor: Colors.transparent,
+                  labelColor: Theme.of(context).primaryColor,
+                  labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                  unselectedLabelColor:
+                      Theme.of(context).primaryColor.withOpacity(0.3),
+                  onTap: (index) {
+                    carouselController.animateToPage(index);
+                  },
+                  tabs: [
+                    Tab(
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text(
+                            'About Kegel',
+                            style: TextStyle(
+                              fontSize: 22,
                             ),
                           ),
-                          Tab(
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Text(
-                                'How to do',
-                                style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
+                        ),
+                      ),
+                    ),
+                    Tab(
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'How to do',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Tab(
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Benefits for women',
-                                style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
+                        ),
+                      ),
+                    ),
+                    Tab(
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Benefits for women',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ],
@@ -89,14 +95,20 @@ class _LearnWidgetState extends State<LearnWidget> {
               Container(
                 padding: EdgeInsets.only(left: 0, top: 10, bottom: 20),
                 child: CarouselSlider(
+                  carouselController: carouselController,
                   options: CarouselOptions(
-                    height: 480.0,
-                    autoPlay: false,
-                    enlargeCenterPage: true,
-                    viewportFraction: 1,
-                    aspectRatio: 2.0,
-                    enableInfiniteScroll: false,
-                  ),
+                      height: 480.0,
+                      autoPlay: false,
+                      enlargeCenterPage: true,
+                      viewportFraction: 1,
+                      aspectRatio: 2.0,
+                      enableInfiniteScroll: false,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          _current = index;
+                          tabController.index = index;
+                        });
+                      }),
                   items: <Widget>[
                     Builder(
                       builder: (BuildContext context) {
@@ -655,7 +667,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                 child: Center(
                   child: new DotsIndicator(
                     dotsCount: 3,
-                    position: 0,
+                    position: _current.toDouble(),
                     decorator: DotsDecorator(
                       size: const Size.square(5.0),
                       activeSize: const Size(15.0, 5.0),
