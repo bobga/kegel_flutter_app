@@ -39,7 +39,9 @@ class _DisclaimerWidget extends State<DisclaimerWidget> {
               height: 60,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),

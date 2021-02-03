@@ -11,6 +11,9 @@ class FindMusclesWidget extends StatefulWidget {
 }
 
 class _FindMusclesWidget extends State<FindMusclesWidget> {
+  CarouselController carouselController = CarouselController();
+  bool isNextPage = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +29,17 @@ class _FindMusclesWidget extends State<FindMusclesWidget> {
           Container(
             padding: EdgeInsets.only(left: 0, top: 20, right: 0),
             child: CarouselSlider(
+              carouselController: carouselController,
               options: CarouselOptions(
                 height: 400.0,
                 autoPlay: false,
                 viewportFraction: 1,
                 enableInfiniteScroll: false,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    isNextPage = index == 0 ? false : true;
+                  });
+                },
               ),
               items: <Widget>[
                 Builder(
@@ -129,7 +138,13 @@ class _FindMusclesWidget extends State<FindMusclesWidget> {
             height: 10,
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              if (isNextPage) {
+                Navigator.pop(context);
+              } else {
+                carouselController.animateToPage(1);
+              }
+            },
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
@@ -141,7 +156,7 @@ class _FindMusclesWidget extends State<FindMusclesWidget> {
                 height: 40,
                 child: Center(
                   child: Text(
-                    'Next',
+                    isNextPage ? 'Got it' : 'Next',
                     style: TextStyle(
                       fontSize: 27,
                       fontWeight: FontWeight.bold,
