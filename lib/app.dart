@@ -29,6 +29,7 @@ class _AppState extends State<App> {
             theme: ThemeData(
               //primaryColor: Color(0xFFF5739E),
               primaryColor: config.Colors().mainColor(0.2),
+              //primaryColor: Color(_setting.mainColor),
               backgroundColor: Color(0xFFF5F7FA),
               textTheme: TextTheme(
                 headline1: TextStyle(

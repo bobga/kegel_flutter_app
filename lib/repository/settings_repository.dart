@@ -1,13 +1,13 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
+// import 'dart:convert';
+// import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:global_configuration/global_configuration.dart';
-import 'package:http/http.dart' as http;
-import 'package:location/location.dart';
+// import 'package:global_configuration/global_configuration.dart';
+// import 'package:http/http.dart' as http;
+// import 'package:location/location.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/setting.dart';
@@ -17,35 +17,28 @@ final navigatorKey = GlobalKey<NavigatorState>();
 
 Future<Setting> initSettings() async {
   Setting _setting;
-  final String url =
-      '${GlobalConfiguration().getValue('api_base_url')}settings';
   try {
-    final response = await http
-        .get(url, headers: {HttpHeaders.contentTypeHeader: 'application/json'});
-    if (response.statusCode == 200 &&
-        response.headers.containsValue('application/json')) {
-      if (json.decode(response.body)['data'] != null) {
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString(
-            'settings', json.encode(json.decode(response.body)['data']));
-        _setting = Setting.fromJSON(json.decode(response.body)['data']);
-        if (prefs.containsKey('language')) {
-          _setting.mobileLanguage.value = Locale(prefs.get('language'), '');
-        }
-        _setting.brightness.value = prefs.getBool('isDark') ?? false
-            ? Brightness.dark
-            : Brightness.light;
-        setting.value = _setting;
-        // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
-        setting.notifyListeners();
-      }
-    } else {
-      //print(CustomTrace(StackTrace.current, message: response.body).toString());
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    _setting = Setting.fromJSON({});
+    if (prefs.containsKey('language')) {
+      _setting.mobileLanguage.value = Locale(prefs.get('language'), '');
     }
+    print(prefs.get('themeColor'));
+    if (prefs.containsKey('themeColor')) {
+      _setting.mainColor.value = prefs.get('themeColor');
+    }
+
+    setting.value = _setting;
+
+    // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
+    setting.notifyListeners();
   } catch (e) {
+    print(e);
     //print(CustomTrace(StackTrace.current, message: url).toString());
-    return Setting.fromJSON({});
+    //return Setting.fromJSON({});
   }
+
   return setting.value;
 }
 
@@ -115,6 +108,21 @@ Future<String> getDefaultLanguage(String defaultLanguage) async {
     defaultLanguage = await prefs.get('language');
   }
   return defaultLanguage;
+}
+
+Future<void> setTheme(int themeColor) async {
+  if (themeColor != null) {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('themeColor', themeColor);
+  }
+}
+
+Future<int> getTheme(int themeColor) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  if (prefs.containsKey('themeColor')) {
+    themeColor = await prefs.get('themeColor');
+  }
+  return themeColor;
 }
 
 Future<void> saveMessageId(String messageId) async {
