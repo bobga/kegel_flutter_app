@@ -76,7 +76,9 @@ class _CanKegelWidget extends State<CanKegelWidget> {
               height: 60,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
