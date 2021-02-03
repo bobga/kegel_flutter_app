@@ -11,8 +11,18 @@ class LearnWidget extends StatefulWidget {
   _LearnWidgetState createState() => _LearnWidgetState();
 }
 
-class _LearnWidgetState extends State<LearnWidget> {
+class _LearnWidgetState extends State<LearnWidget>
+    with SingleTickerProviderStateMixin {
+  int _current = 0;
+  CarouselController carouselController = CarouselController();
+  TabController tabController;
+
   @override
+  void initState() {
+    super.initState();
+    tabController = TabController(length: 3, vsync: this);
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -28,58 +38,55 @@ class _LearnWidgetState extends State<LearnWidget> {
                   style: Theme.of(context).textTheme.headline2,
                 ),
               ),
-              DefaultTabController(
-                length: 3,
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      child: TabBar(
-                        isScrollable: true,
-                        indicatorColor: Colors.transparent,
-                        labelColor: Theme.of(context).primaryColor,
-                        labelStyle: TextStyle(fontWeight: FontWeight.bold),
-                        unselectedLabelColor:
-                            Theme.of(context).primaryColor.withOpacity(0.3),
-                        tabs: [
-                          Tab(
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Text(
-                                  'About Kegel',
-                                  style: TextStyle(
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ),
+              Container(
+                child: TabBar(
+                  controller: tabController,
+                  isScrollable: true,
+                  indicatorColor: Colors.transparent,
+                  labelColor: Theme.of(context).primaryColor,
+                  labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                  unselectedLabelColor:
+                      Theme.of(context).primaryColor.withOpacity(0.3),
+                  onTap: (index) {
+                    carouselController.animateToPage(index);
+                  },
+                  tabs: [
+                    Tab(
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text(
+                            'About Kegel',
+                            style: TextStyle(
+                              fontSize: 22,
                             ),
                           ),
-                          Tab(
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Text(
-                                'How to do',
-                                style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
+                        ),
+                      ),
+                    ),
+                    Tab(
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'How to do',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Tab(
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Benefits for women',
-                                style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
+                        ),
+                      ),
+                    ),
+                    Tab(
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Benefits for women',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ],
@@ -88,33 +95,38 @@ class _LearnWidgetState extends State<LearnWidget> {
               Container(
                 padding: EdgeInsets.only(left: 0, top: 10, bottom: 20),
                 child: CarouselSlider(
+                  carouselController: carouselController,
                   options: CarouselOptions(
-                    height: 480.0,
-                    autoPlay: false,
-                    enlargeCenterPage: true,
-                    viewportFraction: 1,
-                    aspectRatio: 2.0,
-                    enableInfiniteScroll: false,
-                  ),
+                      height: 480.0,
+                      autoPlay: false,
+                      enlargeCenterPage: true,
+                      viewportFraction: 1,
+                      aspectRatio: 2.0,
+                      enableInfiniteScroll: false,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          _current = index;
+                          tabController.index = index;
+                        });
+                      }),
                   items: <Widget>[
                     Builder(
                       builder: (BuildContext context) {
                         return Container(
-                          width: MediaQuery.of(context).size.width,
+                          width: MediaQuery.of(context).size.width - 100,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage(
                                 "assets/img/bg_learn_card1_pink.png",
                               ),
-                              fit: BoxFit.fitHeight,
+                              fit: BoxFit.fitWidth,
                             ),
                           ),
                           child: ListView(
                             shrinkWrap: true,
                             primary: false,
                             padding: EdgeInsets.symmetric(
-                              horizontal: 50,
-                              vertical: 20,
+                              vertical: 30,
                             ),
                             children: <Widget>[
                               ListTile(
@@ -156,7 +168,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                         'What\'s Kegel?',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -211,7 +223,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                         'What are the benefits?',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -266,7 +278,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                         'Can I do Kegel?',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -290,22 +302,21 @@ class _LearnWidgetState extends State<LearnWidget> {
                     Builder(
                       builder: (BuildContext context) {
                         return Container(
-                          width: MediaQuery.of(context).size.width,
+                          width: MediaQuery.of(context).size.width - 100,
                           margin: EdgeInsets.symmetric(horizontal: 5.0),
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage(
                                 "assets/img/bg_learn_card2_pink.png",
                               ),
-                              fit: BoxFit.contain,
+                              fit: BoxFit.fitWidth,
                             ),
                           ),
                           child: ListView(
                             shrinkWrap: true,
                             primary: false,
                             padding: EdgeInsets.symmetric(
-                              horizontal: 50,
-                              vertical: 20,
+                              vertical: 30,
                             ),
                             children: <Widget>[
                               ListTile(
@@ -347,7 +358,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                         'How to do Kegel?',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -404,7 +415,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                           maxLines: 2,
                                           style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 20,
+                                            fontSize: 19,
                                             fontWeight: FontWeight.bold,
                                           ),
                                           overflow: TextOverflow.ellipsis,
@@ -461,7 +472,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                         'Please note',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -516,7 +527,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                         'Disclaimer',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -656,7 +667,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                 child: Center(
                   child: new DotsIndicator(
                     dotsCount: 3,
-                    position: 0,
+                    position: _current.toDouble(),
                     decorator: DotsDecorator(
                       size: const Size.square(5.0),
                       activeSize: const Size(15.0, 5.0),
