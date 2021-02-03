@@ -66,32 +66,12 @@ class _SettingWidgetState extends State<SettingWidget> {
         automaticallyImplyLeading: false,
         elevation: 0,
         title: Padding(
-          padding: const EdgeInsets.all(28.0),
+          padding: const EdgeInsets.only(left: 5.0, top: 3),
           child: Text(
             S.of(context).settings,
-            //'Settings',
-            style: Theme.of(context).textTheme.headline4.merge(
-                TextStyle(letterSpacing: 1.3, fontWeight: FontWeight.bold)),
+            style: Theme.of(context).textTheme.headline1,
           ),
         ),
-        actions: <Widget>[
-          FlatButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed('/DayExercise');
-            },
-            child: Stack(
-              alignment: AlignmentDirectional.bottomEnd,
-              children: <Widget>[
-                Icon(
-                  Icons.attribution_rounded,
-                  color: Colors.grey,
-                  size: 28,
-                ),
-              ],
-            ),
-            color: Colors.transparent,
-          )
-        ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
@@ -165,7 +145,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                       //side: BorderSide(color: Colors.red),
                     ),
                     onPressed: () {},
-                    color: Theme.of(context).backgroundColor,
+                    color: Color(0xFFFCEFF3),
                     textColor: Theme.of(context).primaryColor,
                     child: Text("Why I see ads", //.toUpperCase(),
                         style: TextStyle(fontSize: 18)),
@@ -268,7 +248,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                               print("asdf")
                             }
                         : null,
-                    color: Theme.of(context).backgroundColor,
+                    color: Color(0xFFFCEFF3),
                     textColor: Theme.of(context).primaryColor,
                     child: Text("+ Add reminder", //.toUpperCase(),
                         style: TextStyle(fontSize: 18)),
@@ -309,28 +289,18 @@ class _SettingWidgetState extends State<SettingWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                      width: 120,
+                      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+                      width: 140,
                       decoration: BoxDecoration(
-                        //color: Theme.of(context).primaryColor,
-                        color: Colors.grey[100],
+                        color: Theme.of(context).backgroundColor,
                         borderRadius: BorderRadius.circular(26),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.15),
-                              offset: Offset(0, 3),
-                              blurRadius: 10)
-                        ],
                       ),
                       child: Column(
                         children: [
                           Padding(padding: EdgeInsets.only(top: 20.0)),
                           CircleAvatar(
                             backgroundImage: AssetImage(
-                                "assets/img/vector_setting_vibration_blue.png"),
+                                "assets/img/vector_setting_vibration_pink.png"),
                             radius: 35,
                           ),
                           Padding(padding: EdgeInsets.only(top: 10.0)),
@@ -357,26 +327,17 @@ class _SettingWidgetState extends State<SettingWidget> {
                     Container(
                       margin:
                           EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                      width: 120,
+                      width: 140,
                       decoration: BoxDecoration(
-                        //color: Theme.of(context).primaryColor,
-                        color: Colors.grey[100],
+                        color: Theme.of(context).backgroundColor,
                         borderRadius: BorderRadius.circular(26),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.15),
-                              offset: Offset(0, 3),
-                              blurRadius: 10)
-                        ],
                       ),
                       child: Column(
                         children: [
                           Padding(padding: EdgeInsets.only(top: 20.0)),
                           CircleAvatar(
                             backgroundImage: AssetImage(
-                                "assets/img/vector_setting_voice_blue.png"),
+                                "assets/img/vector_setting_voice_pink.png"),
                             radius: 35,
                           ),
                           Padding(padding: EdgeInsets.only(top: 10.0)),
