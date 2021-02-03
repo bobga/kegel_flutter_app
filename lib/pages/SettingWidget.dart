@@ -65,8 +65,8 @@ class _SettingWidgetState extends State<SettingWidget> {
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         elevation: 0,
-        title: Padding(
-          padding: const EdgeInsets.only(left: 5.0, top: 3),
+        title: Transform(
+          transform: Matrix4.translationValues(-87.0, 0.0, 0.0),
           child: Text(
             S.of(context).settings,
             style: Theme.of(context).textTheme.headline1,

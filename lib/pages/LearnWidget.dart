@@ -32,7 +32,7 @@ class _LearnWidgetState extends State<LearnWidget>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(left: 20, top: 70, bottom: 10),
+                padding: const EdgeInsets.only(left: 20, top: 48, bottom: 10),
                 child: Text(
                   'Learn',
                   style: Theme.of(context).textTheme.headline1,

@@ -29,8 +29,8 @@ class _MineWidgetState extends State<MineWidget> {
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         elevation: 0,
-        title: Padding(
-          padding: const EdgeInsets.only(left: 5.0, top: 3),
+        title: Transform(
+          transform: Matrix4.translationValues(-123.0, 0, 0.0),
           child: Text(
             'Mine',
             style: Theme.of(context).textTheme.headline1,

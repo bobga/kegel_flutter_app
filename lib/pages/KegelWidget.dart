@@ -162,7 +162,7 @@ class _KegelWidgetState extends State<KegelWidget> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                      top: 70,
+                      top: 48,
                       left: 20,
                       bottom: 5,
                     ),
