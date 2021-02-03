@@ -36,21 +36,7 @@ class _HowKegelWidget extends State<HowKegelWidget> {
               style: Theme.of(context).textTheme.headline6,
             ),
             SizedBox(
-              height: 40,
-            ),
-            Text(
-              "- Get more intense orgasms.",
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Text(
-              "- Last longer in bed.",
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            SizedBox(
-              height: 40,
+              height: 10,
             ),
             Center(
               child: Image.asset(
@@ -59,10 +45,14 @@ class _HowKegelWidget extends State<HowKegelWidget> {
               ),
             ),
             SizedBox(
-              height: 60,
+              height: 10,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  '/FindMuscles',
+                );
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),

@@ -136,7 +136,9 @@ class _WhatBenefitsWidget extends State<WhatBenefitsWidget> {
               height: 60,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),

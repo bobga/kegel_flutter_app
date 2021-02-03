@@ -46,7 +46,11 @@ class _WhatsKegelWidget extends State<WhatsKegelWidget> {
               height: 40,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  '/WhatBenefits',
+                );
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
@@ -59,10 +63,6 @@ class _WhatsKegelWidget extends State<WhatsKegelWidget> {
                   child: Center(
                     child: Text(
                       'What are the benefits?',
-                      style: TextStyle(
-                        fontSize: 27,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ),
                 ),
@@ -72,7 +72,11 @@ class _WhatsKegelWidget extends State<WhatsKegelWidget> {
               height: 10,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  '/HowKegel',
+                );
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
@@ -94,7 +98,11 @@ class _WhatsKegelWidget extends State<WhatsKegelWidget> {
               height: 10,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  '/CanKegel',
+                );
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
