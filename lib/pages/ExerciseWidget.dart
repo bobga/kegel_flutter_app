@@ -124,10 +124,11 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
         ],
       ),
       body: Stack(
+        alignment: Alignment.center,
         children: [
           Positioned(
             width: screenSize.width,
-            bottom: 150,
+            bottom: 120,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Row(
@@ -183,7 +184,10 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
                       Icons.arrow_forward_ios,
                       color: Theme.of(context).primaryColor.withOpacity(0.5),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushReplacementNamed('/Complete', arguments: 0);
+                    },
                   ),
                 ],
               ),
@@ -210,6 +214,16 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
                   ),
                   width: screenSize.width * 0.3,
                   lineHeight: 10.0,
+                  percent: 1.0,
+                  backgroundColor: Colors.orange.withOpacity(0.1),
+                  progressColor: Colors.orange,
+                ),
+                LinearPercentIndicator(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 7,
+                  ),
+                  width: screenSize.width * 0.3,
+                  lineHeight: 10.0,
                   percent: 0.3,
                   backgroundColor: Colors.orange.withOpacity(0.1),
                   progressColor: Colors.orange,
@@ -218,9 +232,9 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
             ),
           ),
           Positioned(
+            width: screenSize.width,
             bottom: 40,
             child: Container(
-              width: screenSize.width,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -272,6 +286,7 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
           Container(
             width: screenSize.width,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   "1\" tense, 1\" relax",
