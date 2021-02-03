@@ -113,7 +113,7 @@ class _LearnWidgetState extends State<LearnWidget>
                     Builder(
                       builder: (BuildContext context) {
                         return Container(
-                          width: MediaQuery.of(context).size.width - 100,
+                          width: MediaQuery.of(context).size.width - 40,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage(
@@ -302,7 +302,7 @@ class _LearnWidgetState extends State<LearnWidget>
                     Builder(
                       builder: (BuildContext context) {
                         return Container(
-                          width: MediaQuery.of(context).size.width - 100,
+                          width: MediaQuery.of(context).size.width - 40,
                           margin: EdgeInsets.symmetric(horizontal: 5.0),
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -551,7 +551,7 @@ class _LearnWidgetState extends State<LearnWidget>
                     Builder(
                       builder: (BuildContext context) {
                         return Container(
-                          width: MediaQuery.of(context).size.width,
+                          width: MediaQuery.of(context).size.width - 40,
                           margin: EdgeInsets.symmetric(horizontal: 5.0),
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -588,7 +588,7 @@ class _LearnWidgetState extends State<LearnWidget>
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                    horizontal: 60.0,
+                                    horizontal: 40.0,
                                   ),
                                   child: Text(
                                     'BENE-FITS FOR WOMEN',
@@ -596,7 +596,7 @@ class _LearnWidgetState extends State<LearnWidget>
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 58,
+                                      fontSize: 54,
                                       fontWeight: FontWeight.bold,
                                     ),
                                     overflow: TextOverflow.ellipsis,
