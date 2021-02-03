@@ -31,21 +31,17 @@ class _SplashScreenState extends State<SplashScreen>
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: AnimatedContainer(
-        curve: Curves.fastOutSlowIn,
-        child: Container(
-          width: width,
-          height: height,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                "assets/img/bg_splash.jpg",
-              ),
-              fit: BoxFit.cover,
+      body: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              "assets/img/bg_splash.jpg",
             ),
+            fit: BoxFit.fill,
           ),
         ),
-        duration: Duration(seconds: 2),
       ),
     );
   }

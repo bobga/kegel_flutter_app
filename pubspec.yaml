@@ -42,6 +42,12 @@ dependencies:
   location: ^3.2.4
   shared_preferences: ^0.5.12+4
   device_preview: ^0.4.5
+  audioplayers: ^0.14.1
+  sqflite:
+  path:
+  
+  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -65,6 +71,7 @@ flutter:
   assets:    
     - assets/cfg/
     - assets/img/
+    - assets/db/kegel.db
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

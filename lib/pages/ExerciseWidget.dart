@@ -10,6 +10,80 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
   bool _isRelax = true;
   bool _isPlay = false;
   bool _isPrivate = false;
+
+  void _noteModalBottomSheet(context) {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      context: context,
+      builder: (BuildContext buildContext) {
+        return SingleChildScrollView(
+          padding: EdgeInsets.only(
+            left: 30,
+            top: 30,
+            right: 30,
+            bottom: 20,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                "Please note",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "- Empty your bladder before exercising. Stop the urination is not an exercise. it's not recommended to do it regularly as it can increase the risk of a urinary tract infection.",
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "- Relax your body and mind.",
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              SizedBox(
+                height: 60,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    color: Color(0xFFFFF2F0),
+                  ),
+                  padding: const EdgeInsets.all(10.0),
+                  child: SizedBox(
+                    width: 340,
+                    height: 40,
+                    child: Center(
+                      child: Text(
+                        'Got it',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -50,10 +124,11 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
         ],
       ),
       body: Stack(
+        alignment: Alignment.center,
         children: [
           Positioned(
             width: screenSize.width,
-            bottom: 150,
+            bottom: 120,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Row(
@@ -109,7 +184,10 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
                       Icons.arrow_forward_ios,
                       color: Theme.of(context).primaryColor.withOpacity(0.5),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushReplacementNamed('/Complete', arguments: 0);
+                    },
                   ),
                 ],
               ),
@@ -136,6 +214,16 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
                   ),
                   width: screenSize.width * 0.3,
                   lineHeight: 10.0,
+                  percent: 1.0,
+                  backgroundColor: Colors.orange.withOpacity(0.1),
+                  progressColor: Colors.orange,
+                ),
+                LinearPercentIndicator(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 7,
+                  ),
+                  width: screenSize.width * 0.3,
+                  lineHeight: 10.0,
                   percent: 0.3,
                   backgroundColor: Colors.orange.withOpacity(0.1),
                   progressColor: Colors.orange,
@@ -144,9 +232,9 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
             ),
           ),
           Positioned(
+            width: screenSize.width,
             bottom: 40,
             child: Container(
-              width: screenSize.width,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -186,7 +274,9 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
                         size: 25,
                         color: Theme.of(context).primaryColor,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        _noteModalBottomSheet(context);
+                      },
                     ),
                   ),
                 ],
@@ -196,6 +286,7 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
           Container(
             width: screenSize.width,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   "1\" tense, 1\" relax",
