@@ -119,7 +119,7 @@ class _LearnWidgetState extends State<LearnWidget>
                               image: AssetImage(
                                 "assets/img/bg_learn_card1_pink.png",
                               ),
-                              fit: BoxFit.fitWidth,
+                              fit: BoxFit.contain,
                             ),
                           ),
                           child: ListView(
@@ -309,7 +309,7 @@ class _LearnWidgetState extends State<LearnWidget>
                               image: AssetImage(
                                 "assets/img/bg_learn_card2_pink.png",
                               ),
-                              fit: BoxFit.fitWidth,
+                              fit: BoxFit.contain,
                             ),
                           ),
                           child: ListView(
