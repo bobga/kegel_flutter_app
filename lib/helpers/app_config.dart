@@ -41,70 +41,9 @@ class App {
 class Colors {
   Color mainColor(double opacity) {
     try {
-      return Color(settingRepo.setting.value.mainColor);
+      return Color(settingRepo.setting.value.mainColor.value);
     } catch (e) {
-      return Color(0xFFF5739E);
-    }
-  }
-
-  Color secondColor(double opacity) {
-    try {
-      return Color(int.parse(
-              settingRepo.setting.value.secondColor.replaceAll("#", "0xFF")))
-          .withOpacity(opacity);
-    } catch (e) {
-      return Color(0xFFCCCCCC).withOpacity(opacity);
-    }
-  }
-
-  Color accentColor(double opacity) {
-    try {
-      return Color(int.parse(
-              settingRepo.setting.value.accentColor.replaceAll("#", "0xFF")))
-          .withOpacity(opacity);
-    } catch (e) {
-      return Color(0xFFCCCCCC).withOpacity(opacity);
-    }
-  }
-
-  Color mainDarkColor(double opacity) {
-    try {
-      return Color(int.parse(
-              settingRepo.setting.value.mainDarkColor.replaceAll("#", "0xFF")))
-          .withOpacity(opacity);
-    } catch (e) {
-      return Color(0xFFCCCCCC).withOpacity(opacity);
-    }
-  }
-
-  Color secondDarkColor(double opacity) {
-    try {
-      return Color(int.parse(settingRepo.setting.value.secondDarkColor
-              .replaceAll("#", "0xFF")))
-          .withOpacity(opacity);
-    } catch (e) {
-      return Color(0xFFCCCCCC).withOpacity(opacity);
-    }
-  }
-
-  Color accentDarkColor(double opacity) {
-    try {
-      return Color(int.parse(settingRepo.setting.value.accentDarkColor
-              .replaceAll("#", "0xFF")))
-          .withOpacity(opacity);
-    } catch (e) {
-      return Color(0xFFCCCCCC).withOpacity(opacity);
-    }
-  }
-
-  Color scaffoldColor(double opacity) {
-    // TODO test if brightness is dark or not
-    try {
-      return Color(int.parse(
-              settingRepo.setting.value.scaffoldColor.replaceAll("#", "0xFF")))
-          .withOpacity(opacity);
-    } catch (e) {
-      return Color(0xFFCCCCCC).withOpacity(opacity);
+      return Color(4293943954);
     }
   }
 }
