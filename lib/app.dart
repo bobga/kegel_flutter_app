@@ -64,7 +64,7 @@ class _AppState extends State<App> {
                 style: TextButton.styleFrom(
                   primary: Color(0xFFFD7452),
                   textStyle: TextStyle(
-                    fontSize: 27,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
