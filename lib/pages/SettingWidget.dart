@@ -74,24 +74,24 @@ class _SettingWidgetState extends State<SettingWidget> {
                 TextStyle(letterSpacing: 1.3, fontWeight: FontWeight.bold)),
           ),
         ),
-        actions: <Widget>[
-          FlatButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed('/DayExercise');
-            },
-            child: Stack(
-              alignment: AlignmentDirectional.bottomEnd,
-              children: <Widget>[
-                Icon(
-                  Icons.attribution_rounded,
-                  color: Colors.grey,
-                  size: 28,
-                ),
-              ],
-            ),
-            color: Colors.transparent,
-          )
-        ],
+        // actions: <Widget>[
+        //   FlatButton(
+        //     onPressed: () {
+        //       Navigator.of(context).pushNamed('/DayExercise');
+        //     },
+        //     child: Stack(
+        //       alignment: AlignmentDirectional.bottomEnd,
+        //       children: <Widget>[
+        //         Icon(
+        //           Icons.attribution_rounded,
+        //           color: Colors.grey,
+        //           size: 28,
+        //         ),
+        //       ],
+        //     ),
+        //     color: Colors.transparent,
+        //   )
+        // ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
@@ -246,13 +246,19 @@ class _SettingWidgetState extends State<SettingWidget> {
                   ),
                 ),
                 // Container(
-                //   child: Flexible(
-                //     flex: 1,
-                //     child: new ListView.builder(
-                //       itemCount: reminders.length,
-                //       itemBuilder: (_, index) => reminders[index],
-                //     ),
+                // child:  ListView.builder(
+                //   itemCount: reminders.length,
+                //   itemBuilder: (context, index) {
+                //     return reminders[index];
+                //   },
+                // ),
+                // Flexible(
+                //   flex: 1,
+                //   child: new ListView.builder(
+                //     itemCount: reminders.length,
+                //     itemBuilder: (_, index) => reminders[index],
                 //   ),
+                // ),
                 // ),
                 Container(
                   margin: EdgeInsets.all(20),
@@ -457,6 +463,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                                 onTap: () {
                                   settingRepo.setting.value.mainColor.value =
                                       Colors.blue[300].value;
+                                  settingRepo.setTheme(Colors.blue[300].value);
                                   settingRepo.setting.notifyListeners();
                                   Navigator.pop(context);
                                 },
@@ -476,6 +483,8 @@ class _SettingWidgetState extends State<SettingWidget> {
                                 onTap: () {
                                   settingRepo.setting.value.mainColor.value =
                                       Colors.purple[300].value;
+                                  settingRepo
+                                      .setTheme(Colors.purple[300].value);
                                   settingRepo.setting.notifyListeners();
                                   Navigator.pop(context);
                                 },

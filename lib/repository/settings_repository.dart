@@ -27,62 +27,19 @@ Future<Setting> initSettings() async {
     print(prefs.get('themeColor'));
     if (prefs.containsKey('themeColor')) {
       _setting.mainColor.value = prefs.get('themeColor');
+    } else {
+      _setting.mainColor.value = 0;
     }
 
     setting.value = _setting;
 
-    // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
     setting.notifyListeners();
   } catch (e) {
     print(e);
-    //print(CustomTrace(StackTrace.current, message: url).toString());
-    //return Setting.fromJSON({});
   }
 
   return setting.value;
 }
-
-// Future<dynamic> setCurrentLocation() async {
-//   var location = new Location();
-//   MapsUtil mapsUtil = new MapsUtil();
-//   final whenDone = new Completer();
-//   Address _address = new Address();
-//   location.requestService().then((value) async {
-//     location.getLocation().then((_locationData) async {
-//       String _addressName = await mapsUtil.getAddressName(new LatLng(_locationData?.latitude, _locationData?.longitude), setting.value.googleMapsKey);
-//       _address = Address.fromJSON({'address': _addressName, 'latitude': _locationData?.latitude, 'longitude': _locationData?.longitude});
-//       await changeCurrentLocation(_address);
-//       whenDone.complete(_address);
-//     }).timeout(Duration(seconds: 10), onTimeout: () async {
-//       await changeCurrentLocation(_address);
-//       whenDone.complete(_address);
-//       return null;
-//     }).catchError((e) {
-//       whenDone.complete(_address);
-//     });
-//   });
-//   return whenDone.future;
-// }
-
-// Future<Address> changeCurrentLocation(Address _address) async {
-//   if (!_address.isUnknown()) {
-//     SharedPreferences prefs = await SharedPreferences.getInstance();
-//     await prefs.setString('delivery_address', json.encode(_address.toMap()));
-//   }
-//   return _address;
-// }
-
-// Future<Address> getCurrentLocation() async {
-//   SharedPreferences prefs = await SharedPreferences.getInstance();
-//   //await prefs.clear();
-//   if (prefs.containsKey('delivery_address')) {
-//     deliveryAddress.value = Address.fromJSON(json.decode(prefs.getString('delivery_address')));
-//     return deliveryAddress.value;
-//   } else {
-//     deliveryAddress.value = Address.fromJSON({});
-//     return Address.fromJSON({});
-//   }
-// }
 
 void setBrightness(Brightness brightness) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
