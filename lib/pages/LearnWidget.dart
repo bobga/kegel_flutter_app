@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../helpers/app_config.dart' as config;
 
 class LearnWidget extends StatefulWidget {
   final GlobalKey<ScaffoldState> parentScaffoldKey;
@@ -100,21 +101,20 @@ class _LearnWidgetState extends State<LearnWidget> {
                     Builder(
                       builder: (BuildContext context) {
                         return Container(
-                          width: MediaQuery.of(context).size.width,
+                          width: MediaQuery.of(context).size.width - 100,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage(
                                 "assets/img/bg_learn_card1_pink.png",
                               ),
-                              fit: BoxFit.fitHeight,
+                              fit: BoxFit.fitWidth,
                             ),
                           ),
                           child: ListView(
                             shrinkWrap: true,
                             primary: false,
                             padding: EdgeInsets.symmetric(
-                              horizontal: 50,
-                              vertical: 20,
+                              vertical: 30,
                             ),
                             children: <Widget>[
                               ListTile(
@@ -156,7 +156,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                         'What\'s Kegel?',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -211,7 +211,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                         'What are the benefits?',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -266,7 +266,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                         'Can I do Kegel?',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -290,22 +290,21 @@ class _LearnWidgetState extends State<LearnWidget> {
                     Builder(
                       builder: (BuildContext context) {
                         return Container(
-                          width: MediaQuery.of(context).size.width,
+                          width: MediaQuery.of(context).size.width - 100,
                           margin: EdgeInsets.symmetric(horizontal: 5.0),
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage(
                                 "assets/img/bg_learn_card2_pink.png",
                               ),
-                              fit: BoxFit.contain,
+                              fit: BoxFit.fitWidth,
                             ),
                           ),
                           child: ListView(
                             shrinkWrap: true,
                             primary: false,
                             padding: EdgeInsets.symmetric(
-                              horizontal: 50,
-                              vertical: 20,
+                              vertical: 30,
                             ),
                             children: <Widget>[
                               ListTile(
@@ -347,7 +346,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                         'How to do Kegel?',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -404,7 +403,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                           maxLines: 2,
                                           style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 20,
+                                            fontSize: 19,
                                             fontWeight: FontWeight.bold,
                                           ),
                                           overflow: TextOverflow.ellipsis,
@@ -461,7 +460,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                         'Please note',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -516,7 +515,7 @@ class _LearnWidgetState extends State<LearnWidget> {
                                         'Disclaimer',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
