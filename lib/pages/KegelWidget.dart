@@ -26,7 +26,7 @@ class _KegelWidgetState extends State<KegelWidget> {
         children: [
           Container(
             padding: EdgeInsets.only(
-              top: 260,
+              top: 320,
             ),
             child: ListView.builder(
               itemCount: 10,
@@ -52,7 +52,7 @@ class _KegelWidgetState extends State<KegelWidget> {
                               borderRadius: BorderRadius.circular(20),
                               image: DecorationImage(
                                 image: AssetImage(
-                                  "assets/img/bg_learn_card1_blue.png",
+                                  "assets/img/bg_learn_card1_pink.png",
                                 ),
                                 fit: BoxFit.cover,
                               ),
@@ -152,7 +152,7 @@ class _KegelWidgetState extends State<KegelWidget> {
           ),
           Positioned(
             top: 0,
-            height: 260,
+            height: 350,
             width: screenSize.width,
             // color: Colors.blue,
             child: Column(
@@ -166,15 +166,12 @@ class _KegelWidgetState extends State<KegelWidget> {
                   ),
                   child: Text(
                     "Kegel",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                    ),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
                 Container(
                   width: screenSize.width,
-                  height: 100,
+                  height: 140,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 10,
@@ -194,27 +191,25 @@ class _KegelWidgetState extends State<KegelWidget> {
                           child: Column(
                             children: [
                               SizedBox(
-                                width: 90,
+                                width: 110,
                                 child: SvgPicture.asset(
                                   "assets/img/progressbar.svg",
-                                  color: _selectDay >= index
-                                      ? Theme.of(context).primaryColor
-                                      : Theme.of(context)
-                                          .primaryColor
-                                          .withOpacity(0.2),
+                                  color: _selectLevel >= index
+                                      ? Color(0xFF7293FF)
+                                      : Color(0xFF7293FF).withOpacity(0.2),
                                 ),
                               ),
                               SizedBox(
-                                height: 5,
+                                height: 10,
                               ),
                               _selectLevel == index
                                   ? Container(
-                                      height: 70,
-                                      width: 70,
+                                      height: 100,
+                                      width: 100,
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(
-                                            "assets/img/bg_level_select_blue.png",
+                                            "assets/img/bg_level_select_pink.png",
                                           ),
                                           fit: BoxFit.contain,
                                         ),
@@ -224,11 +219,11 @@ class _KegelWidgetState extends State<KegelWidget> {
                                           padding:
                                               const EdgeInsets.only(top: 8.0),
                                           child: CircularPercentIndicator(
-                                            radius: 45.0,
-                                            lineWidth: 4.0,
-                                            percent: 0.4,
+                                            radius: 55.0,
+                                            lineWidth: 5.0,
+                                            percent: 0.3,
                                             center: Text(
-                                              "40%",
+                                              "30%",
                                               style: TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
@@ -236,13 +231,15 @@ class _KegelWidgetState extends State<KegelWidget> {
                                               ),
                                             ),
                                             progressColor: Colors.white,
+                                            backgroundColor:
+                                                Colors.white.withOpacity(0.2),
                                           ),
                                         ),
                                       ),
                                     )
                                   : Container(
-                                      height: 70,
-                                      width: 70,
+                                      height: 100,
+                                      width: 100,
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(
@@ -251,6 +248,7 @@ class _KegelWidgetState extends State<KegelWidget> {
                                           fit: BoxFit.contain,
                                         ),
                                       ),
+                                      padding: EdgeInsets.only(top: 10),
                                       child: Center(
                                         child: Text(
                                           "Level ${index + 1} \n"
@@ -259,9 +257,10 @@ class _KegelWidgetState extends State<KegelWidget> {
                                           style: TextStyle(
                                             color: Theme.of(context)
                                                 .primaryColor
-                                                .withOpacity(0.5),
-                                            fontSize: 17,
+                                                .withOpacity(0.4),
+                                            fontSize: 19,
                                             fontWeight: FontWeight.bold,
+                                            height: 1.7,
                                           ),
                                         ),
                                       ),

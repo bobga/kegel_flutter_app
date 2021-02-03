@@ -30,14 +30,10 @@ class _MineWidgetState extends State<MineWidget> {
         automaticallyImplyLeading: false,
         elevation: 0,
         title: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left: 5.0, top: 3),
           child: Text(
             'Mine',
-            style: Theme.of(context).textTheme.headline2.merge(
-                  TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+            style: Theme.of(context).textTheme.headline1,
           ),
         ),
       ),
@@ -113,7 +109,9 @@ class _MineWidgetState extends State<MineWidget> {
                                   child: Text('Total \nduration',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle1),
+                                          .subtitle1
+                                          .merge(
+                                              TextStyle(color: Colors.white))),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
@@ -123,7 +121,7 @@ class _MineWidgetState extends State<MineWidget> {
                                         CrossAxisAlignment.baseline,
                                     children: [
                                       Text(
-                                        '3',
+                                        '12',
                                         style: Theme.of(context)
                                             .textTheme
                                             .headline4
@@ -175,10 +173,13 @@ class _MineWidgetState extends State<MineWidget> {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 18.0, top: 18.0),
-                                  child: Text('Total \ndays',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .subtitle1),
+                                  child: Text(
+                                    'Total \ndays',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle1
+                                        .merge(TextStyle(color: Colors.white)),
+                                  ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
@@ -188,7 +189,7 @@ class _MineWidgetState extends State<MineWidget> {
                                         CrossAxisAlignment.baseline,
                                     children: [
                                       Text(
-                                        '1',
+                                        '3',
                                         style: Theme.of(context)
                                             .textTheme
                                             .headline4
@@ -199,7 +200,7 @@ class _MineWidgetState extends State<MineWidget> {
                                         padding:
                                             const EdgeInsets.only(left: 5.0),
                                         child: Text(
-                                          'day',
+                                          'days',
                                           style: Theme.of(context)
                                               .textTheme
                                               .subtitle2
@@ -475,20 +476,18 @@ class _MineWidgetState extends State<MineWidget> {
       ),
       borderData: FlBorderData(
           show: false, border: Border.all(color: Colors.red, width: 1)),
-      minX: 0,
-      maxX: 12,
+      minX: 1,
+      maxX: 6,
       minY: 0,
       maxY: 6,
       lineBarsData: [
         LineChartBarData(
           spots: [
-            FlSpot(0, 3),
-            FlSpot(2.6, 2),
-            FlSpot(4.9, 5),
-            FlSpot(6.8, 3.1),
-            FlSpot(8, 4),
-            FlSpot(9.5, 3),
-            FlSpot(11, 4),
+            FlSpot(1, 0),
+            FlSpot(3, 2),
+            FlSpot(4, 5),
+            FlSpot(5, 3),
+            FlSpot(6, 0),
           ],
           isCurved: true,
           colors: [Color(0xFFF5739E), Color(0xFFF5739E)],

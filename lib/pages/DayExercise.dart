@@ -38,6 +38,7 @@ class _DayExerciseWidgetState extends State<DayExerciseWidget> {
         title: Text('Level 1',
             style: TextStyle(
               color: Colors.black38,
+              fontSize: 25,
             )),
       ),
       bottomNavigationBar: BottomAppBar(
