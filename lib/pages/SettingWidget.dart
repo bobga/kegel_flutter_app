@@ -226,13 +226,19 @@ class _SettingWidgetState extends State<SettingWidget> {
                   ),
                 ),
                 // Container(
-                //   child: Flexible(
-                //     flex: 1,
-                //     child: new ListView.builder(
-                //       itemCount: reminders.length,
-                //       itemBuilder: (_, index) => reminders[index],
-                //     ),
+                // child:  ListView.builder(
+                //   itemCount: reminders.length,
+                //   itemBuilder: (context, index) {
+                //     return reminders[index];
+                //   },
+                // ),
+                // Flexible(
+                //   flex: 1,
+                //   child: new ListView.builder(
+                //     itemCount: reminders.length,
+                //     itemBuilder: (_, index) => reminders[index],
                 //   ),
+                // ),
                 // ),
                 Container(
                   margin: EdgeInsets.all(20),
@@ -418,6 +424,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                                 onTap: () {
                                   settingRepo.setting.value.mainColor.value =
                                       Colors.blue[300].value;
+                                  settingRepo.setTheme(Colors.blue[300].value);
                                   settingRepo.setting.notifyListeners();
                                   Navigator.pop(context);
                                 },
@@ -437,6 +444,8 @@ class _SettingWidgetState extends State<SettingWidget> {
                                 onTap: () {
                                   settingRepo.setting.value.mainColor.value =
                                       Colors.purple[300].value;
+                                  settingRepo
+                                      .setTheme(Colors.purple[300].value);
                                   settingRepo.setting.notifyListeners();
                                   Navigator.pop(context);
                                 },
