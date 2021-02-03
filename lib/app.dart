@@ -29,6 +29,7 @@ class _AppState extends State<App> {
             theme: ThemeData(
               //primaryColor: Color(0xFFF5739E),
               primaryColor: config.Colors().mainColor(0.2),
+              //primaryColor: Color(_setting.mainColor),
               backgroundColor: Color(0xFFF5F7FA),
               textTheme: TextTheme(
                 headline1: TextStyle(
@@ -64,7 +65,7 @@ class _AppState extends State<App> {
                 style: TextButton.styleFrom(
                   primary: Color(0xFFFD7452),
                   textStyle: TextStyle(
-                    fontSize: 27,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:global_configuration/global_configuration.dart';
 import 'package:path/path.dart';
 import './app.dart';
-import 'package:global_configuration/global_configuration.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:sqflite/sqflite.dart';
 

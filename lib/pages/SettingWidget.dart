@@ -31,12 +31,29 @@ class _SettingWidgetState extends State<SettingWidget> {
   bool isVoice = true;
   Gender gend = Gender.Male;
   Themes them = Themes.Pink;
+  String themeColor = 'Pink';
+  List<AlarmReminderWidget> reminders = [];
 
   LanguagesList languagesList;
 
   @override
   void initState() {
     languagesList = new LanguagesList();
+    //reminders.add(new AlarmReminderWidget());
+    switch (settingRepo.setting.value.mainColor.value) {
+      case 4284790262:
+        themeColor = 'Blue';
+        break;
+      case 4290406600:
+        themeColor = 'Purple';
+        break;
+      case 4286695300:
+        themeColor = 'Green';
+        break;
+      case 4293943954:
+        themeColor = 'Pink';
+        break;
+    }
     super.initState();
   }
 
@@ -77,7 +94,7 @@ class _SettingWidgetState extends State<SettingWidget> {
         ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         child: Column(children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -148,10 +165,10 @@ class _SettingWidgetState extends State<SettingWidget> {
                       //side: BorderSide(color: Colors.red),
                     ),
                     onPressed: () {},
-                    color: Theme.of(context).primaryColorLight,
+                    color: Theme.of(context).backgroundColor,
                     textColor: Theme.of(context).primaryColor,
                     child: Text("Why I see ads", //.toUpperCase(),
-                        style: TextStyle(fontSize: 16)),
+                        style: TextStyle(fontSize: 18)),
                   ),
                 ),
               ],
@@ -210,6 +227,33 @@ class _SettingWidgetState extends State<SettingWidget> {
                           : Theme.of(context).textTheme.subtitle1.merge(
                               TextStyle(color: Colors.black.withOpacity(0.6)))),
                 ),
+                ListTile(
+                  onTap: () {},
+                  leading: Icon(
+                    Icons.alarm_on,
+                    size: 30,
+                    color: Colors.black,
+                  ),
+                  title: Text(
+                    //S.of(context).profile_settings,
+                    '08:00 AM',
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  trailing: Icon(
+                    Icons.delete_forever,
+                    size: 30,
+                    color: Colors.grey,
+                  ),
+                ),
+                // Container(
+                //   child: Flexible(
+                //     flex: 1,
+                //     child: new ListView.builder(
+                //       itemCount: reminders.length,
+                //       itemBuilder: (_, index) => reminders[index],
+                //     ),
+                //   ),
+                // ),
                 Container(
                   margin: EdgeInsets.all(20),
                   height: 50,
@@ -218,11 +262,16 @@ class _SettingWidgetState extends State<SettingWidget> {
                       borderRadius: BorderRadius.circular(18.0),
                       //side: BorderSide(color: Colors.red),
                     ),
-                    onPressed: isReminder ? () => {} : null,
-                    color: Theme.of(context).primaryColorLight,
+                    onPressed: isReminder
+                        ? () => {
+                              //reminders.add(new AlarmReminderWidget())
+                              print("asdf")
+                            }
+                        : null,
+                    color: Theme.of(context).backgroundColor,
                     textColor: Theme.of(context).primaryColor,
                     child: Text("+ Add reminder", //.toUpperCase(),
-                        style: TextStyle(fontSize: 16)),
+                        style: TextStyle(fontSize: 18)),
                   ),
                 ),
               ],
@@ -406,7 +455,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                             children: <Widget>[
                               ListTile(
                                 onTap: () {
-                                  settingRepo.setting.value.mainColor =
+                                  settingRepo.setting.value.mainColor.value =
                                       Colors.blue[300].value;
                                   settingRepo.setting.notifyListeners();
                                   Navigator.pop(context);
@@ -425,7 +474,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                               SizedBox(height: 10),
                               ListTile(
                                 onTap: () {
-                                  settingRepo.setting.value.mainColor =
+                                  settingRepo.setting.value.mainColor.value =
                                       Colors.purple[300].value;
                                   settingRepo.setting.notifyListeners();
                                   Navigator.pop(context);
@@ -444,8 +493,9 @@ class _SettingWidgetState extends State<SettingWidget> {
                               SizedBox(height: 10),
                               ListTile(
                                 onTap: () {
-                                  settingRepo.setting.value.mainColor =
+                                  settingRepo.setting.value.mainColor.value =
                                       Colors.green[300].value;
+                                  settingRepo.setTheme(Colors.green[300].value);
                                   settingRepo.setting.notifyListeners();
                                   Navigator.pop(context);
                                 },
@@ -463,8 +513,9 @@ class _SettingWidgetState extends State<SettingWidget> {
                               SizedBox(height: 10),
                               ListTile(
                                 onTap: () {
-                                  settingRepo.setting.value.mainColor =
+                                  settingRepo.setting.value.mainColor.value =
                                       Colors.pink[300].value;
+                                  settingRepo.setTheme(Colors.pink[300].value);
                                   settingRepo.setting.notifyListeners();
                                   Navigator.pop(context);
                                 },
@@ -497,7 +548,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                         color: Theme.of(context).primaryColor,
                       ), // icon-1
                       Text(
-                        'Blue',
+                        themeColor,
                         style: Theme.of(context).textTheme.subtitle1,
                       ),
                       Icon(
@@ -575,197 +626,212 @@ class _SettingWidgetState extends State<SettingWidget> {
                   ),
                 ),
                 ListTile(
-                  onTap: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                              contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 20),
-                              titlePadding: EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 20),
-                              title: Row(
-                                children: <Widget>[
-                                  //Icon(Icons.restore),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    'Select Language',
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1,
-                                  )
-                                ],
-                              ),
-                              content: Container(
-                                height: 500.0, // Change as per your requirement
-                                width: 300.0, // Change as per your requirement
-                                child: ListView.separated(
-                                  scrollDirection: Axis.vertical,
-                                  shrinkWrap: true,
-                                  primary: false,
-                                  itemCount: languagesList.languages.length,
-                                  separatorBuilder: (context, index) {
-                                    return SizedBox(height: 10);
-                                  },
-                                  itemBuilder: (context, index) {
-                                    Language _language = languagesList.languages
-                                        .elementAt(index);
-                                    settingRepo
-                                        .getDefaultLanguage(settingRepo
-                                            .setting
-                                            .value
-                                            .mobileLanguage
-                                            .value
-                                            .languageCode)
-                                        .then((_langCode) {
-                                      if (_langCode == _language.code) {
-                                        setState(() {
-                                          _language.selected = true;
-                                        });
-                                      }
-                                    });
-                                    return InkWell(
-                                      onTap: () async {
-                                        var _lang = _language.code.split("_");
-                                        if (_lang.length > 1)
-                                          settingRepo.setting.value
-                                                  .mobileLanguage.value =
-                                              new Locale(_lang.elementAt(0),
-                                                  _lang.elementAt(1));
-                                        else
-                                          settingRepo.setting.value
-                                                  .mobileLanguage.value =
-                                              new Locale(_lang.elementAt(0));
-                                        settingRepo.setting.notifyListeners();
-                                        languagesList.languages.forEach((_l) {
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                                contentPadding:
+                                    EdgeInsets.symmetric(horizontal: 20),
+                                titlePadding: EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 20),
+                                title: Row(
+                                  children: <Widget>[
+                                    //Icon(Icons.restore),
+                                    SizedBox(width: 10),
+                                    Text(
+                                      'Select Language',
+                                      style:
+                                          Theme.of(context).textTheme.bodyText1,
+                                    )
+                                  ],
+                                ),
+                                content: Container(
+                                  height:
+                                      500.0, // Change as per your requirement
+                                  width:
+                                      300.0, // Change as per your requirement
+                                  child: ListView.separated(
+                                    scrollDirection: Axis.vertical,
+                                    shrinkWrap: true,
+                                    primary: false,
+                                    itemCount: languagesList.languages.length,
+                                    separatorBuilder: (context, index) {
+                                      return SizedBox(height: 10);
+                                    },
+                                    itemBuilder: (context, index) {
+                                      Language _language = languagesList
+                                          .languages
+                                          .elementAt(index);
+                                      settingRepo
+                                          .getDefaultLanguage(settingRepo
+                                              .setting
+                                              .value
+                                              .mobileLanguage
+                                              .value
+                                              .languageCode)
+                                          .then((_langCode) {
+                                        print("current language:" + _langCode);
+                                        if (_langCode == _language.code) {
                                           setState(() {
-                                            _l.selected = false;
+                                            _language.selected = true;
                                           });
-                                        });
-                                        _language.selected =
-                                            !_language.selected;
-                                        print("lang code:" + _language.code);
-                                        settingRepo
-                                            .setDefaultLanguage(_language.code);
-                                        Navigator.pop(context);
-                                      },
-                                      child: Container(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 20, vertical: 8),
-                                        decoration: BoxDecoration(
-                                          color: Theme.of(context)
-                                              .primaryColor
-                                              .withOpacity(0.1),
-                                          boxShadow: [
-                                            BoxShadow(
-                                                color: Theme.of(context)
-                                                    .focusColor
-                                                    .withOpacity(0.1),
-                                                blurRadius: 5,
-                                                offset: Offset(0, 2)),
-                                          ],
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: <Widget>[
-                                            Stack(
-                                              alignment:
-                                                  AlignmentDirectional.center,
-                                              children: <Widget>[
-                                                Container(
-                                                  height: 40,
-                                                  width: 40,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                40)),
-                                                    image: DecorationImage(
-                                                        image: AssetImage(
-                                                            _language.flag),
-                                                        fit: BoxFit.cover),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: _language.selected
-                                                      ? 40
-                                                      : 0,
-                                                  width: _language.selected
-                                                      ? 40
-                                                      : 0,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                40)),
-                                                    color: Theme.of(context)
-                                                        .accentColor
-                                                        .withOpacity(
-                                                            _language.selected
-                                                                ? 0.85
-                                                                : 0),
-                                                  ),
-                                                  child: Icon(
-                                                    Icons.check,
-                                                    size: _language.selected
-                                                        ? 24
-                                                        : 0,
-                                                    color: Theme.of(context)
-                                                        .primaryColor
-                                                        .withOpacity(
-                                                            _language.selected
-                                                                ? 0.85
-                                                                : 0),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(width: 15),
-                                            Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                        }
+                                      });
+                                      return InkWell(
+                                        onTap: () async {
+                                          var _lang = _language.code.split("_");
+                                          if (_lang.length > 1)
+                                            settingRepo.setting.value
+                                                    .mobileLanguage.value =
+                                                new Locale(_lang.elementAt(0),
+                                                    _lang.elementAt(1));
+                                          else
+                                            settingRepo.setting.value
+                                                    .mobileLanguage.value =
+                                                new Locale(_lang.elementAt(0));
+                                          settingRepo.setting.notifyListeners();
+                                          languagesList.languages.forEach((_l) {
+                                            setState(() {
+                                              _l.selected = false;
+                                            });
+                                          });
+                                          _language.selected =
+                                              !_language.selected;
+                                          print("lang code:" + _language.code);
+                                          settingRepo.setDefaultLanguage(
+                                              _language.code);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 20, vertical: 8),
+                                          decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .primaryColor
+                                                .withOpacity(0.1),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Theme.of(context)
+                                                      .focusColor
+                                                      .withOpacity(0.1),
+                                                  blurRadius: 5,
+                                                  offset: Offset(0, 2)),
+                                            ],
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: <Widget>[
+                                              Stack(
+                                                alignment:
+                                                    AlignmentDirectional.center,
                                                 children: <Widget>[
-                                                  Text(
-                                                    _language.englishName,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    maxLines: 2,
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .subtitle1,
+                                                  Container(
+                                                    height: 40,
+                                                    width: 40,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  40)),
+                                                      image: DecorationImage(
+                                                          image: AssetImage(
+                                                              _language.flag),
+                                                          fit: BoxFit.cover),
+                                                    ),
                                                   ),
-                                                  Text(
-                                                    _language.localName,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    maxLines: 2,
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .caption,
+                                                  Container(
+                                                    height: _language.selected
+                                                        ? 40
+                                                        : 0,
+                                                    width: _language.selected
+                                                        ? 40
+                                                        : 0,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  40)),
+                                                      color: Theme.of(context)
+                                                          .accentColor
+                                                          .withOpacity(
+                                                              _language.selected
+                                                                  ? 0.85
+                                                                  : 0),
+                                                    ),
+                                                    child: Icon(
+                                                      Icons.check,
+                                                      size: _language.selected
+                                                          ? 24
+                                                          : 0,
+                                                      color: Theme.of(context)
+                                                          .primaryColor
+                                                          .withOpacity(
+                                                              _language.selected
+                                                                  ? 0.85
+                                                                  : 0),
+                                                    ),
                                                   ),
                                                 ],
                                               ),
-                                            )
-                                          ],
+                                              SizedBox(width: 15),
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: <Widget>[
+                                                    Text(
+                                                      _language.englishName,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      maxLines: 2,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .subtitle1,
+                                                    ),
+                                                    Text(
+                                                      _language.localName,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      maxLines: 2,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .caption,
+                                                    ),
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ));
-                        });
-                  },
-                  dense: false,
-                  title: Text(
-                    'Language options',
-                    style: Theme.of(context).textTheme.subtitle1,
-                  ),
-                  trailing: Icon(
-                    Icons.navigate_next,
-                    color: Colors.black,
-                  ),
-                ),
+                                      );
+                                    },
+                                  ),
+                                ));
+                          });
+                    },
+                    dense: false,
+                    title: Text(
+                      'Language options',
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                    trailing: Wrap(
+                      children: [
+                        Text(
+                            languagesList.getLangCodeToEngName(settingRepo
+                                .setting
+                                .value
+                                .mobileLanguage
+                                .value
+                                .languageCode),
+                            style: Theme.of(context).textTheme.subtitle1),
+                        Icon(
+                          Icons.navigate_next,
+                          color: Colors.black,
+                        ),
+                      ],
+                    )),
                 ListTile(
                   onTap: () {
                     showDialog(
@@ -902,6 +968,39 @@ class _SettingWidgetState extends State<SettingWidget> {
             ),
           ),
         ]),
+      ),
+    );
+  }
+}
+
+class AlarmReminderWidget extends StatefulWidget {
+  AlarmReminderWidget({Key key}) : super(key: key);
+
+  @override
+  _AlarmReminderWidgetState createState() => _AlarmReminderWidgetState();
+}
+
+class _AlarmReminderWidgetState extends State<AlarmReminderWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ListTile(
+        onTap: () {},
+        leading: Icon(
+          Icons.alarm_on,
+          size: 30,
+          color: Colors.black,
+        ),
+        title: Text(
+          //S.of(context).profile_settings,
+          '08:00 AM',
+          style: Theme.of(context).textTheme.headline6,
+        ),
+        trailing: Icon(
+          Icons.delete_forever,
+          size: 30,
+          color: Colors.grey,
+        ),
       ),
     );
   }

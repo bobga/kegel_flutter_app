@@ -32,10 +32,10 @@ class _LearnWidgetState extends State<LearnWidget>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(left: 35, top: 40, bottom: 10),
+                padding: const EdgeInsets.only(left: 20, top: 70, bottom: 10),
                 child: Text(
                   'Learn',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.headline1,
                 ),
               ),
               Container(
@@ -119,7 +119,7 @@ class _LearnWidgetState extends State<LearnWidget>
                               image: AssetImage(
                                 "assets/img/bg_learn_card1_pink.png",
                               ),
-                              fit: BoxFit.fitWidth,
+                              fit: BoxFit.contain,
                             ),
                           ),
                           child: ListView(
@@ -309,7 +309,7 @@ class _LearnWidgetState extends State<LearnWidget>
                               image: AssetImage(
                                 "assets/img/bg_learn_card2_pink.png",
                               ),
-                              fit: BoxFit.fitWidth,
+                              fit: BoxFit.contain,
                             ),
                           ),
                           child: ListView(

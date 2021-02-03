@@ -31,7 +31,7 @@ class _FindMusclesWidget extends State<FindMusclesWidget> {
             child: CarouselSlider(
               carouselController: carouselController,
               options: CarouselOptions(
-                height: 420.0,
+                height: 430.0,
                 autoPlay: false,
                 viewportFraction: 1,
                 enableInfiniteScroll: false,
